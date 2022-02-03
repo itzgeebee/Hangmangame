@@ -31,22 +31,24 @@ while game_in_progress:
     #find the numerical positions of the letters in word
     for position in range(len(word)):
         lett = word[position]
-        #if the guessed letter is the same as a letter in the, replace "_" with that letter at the same position
+        #if the guessed letter is the same as a letter in the letter in the word, replace "_" with that letter at the same position
         if guess == lett:
             display[position] = lett 
-        
+    #if the guessed letter is not in the word, tell the player, decrease the lives and notify the player    
     if guess not in word:
         print("Letter is not in the word " + guess)
         lives -= 1
         print(f"You have {lives} lives left ")
         if lives ==1:
             print("Last chance to save me")
+        #if the player exhausts all their lives, end game
         if lives == 0:
             print("game is over, Thanks for trying to save me")
-            print("here's the word " + word)
+            print("here's the word: " + word)
             game_in_progress = False
     print(display)  
-    print(stages[lives])  
+    print(stages[lives]) 
+    #if the player guesses the word correctly, end game 
     if "_" not in display:
         print("You won, Thanks for saving me")
         game_in_progress = False
