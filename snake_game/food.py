@@ -14,6 +14,7 @@ class Food(Turtle):
         self.refresh()
 
     def refresh(self):
+        """displays the snake food at different positions on the screen """
         random_x_axis = random.randint(-280, 280)
         random_y_axis = random.randint(-280, 280)
         self.goto(random_x_axis, random_y_axis)

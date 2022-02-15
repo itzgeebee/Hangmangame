@@ -1,14 +1,15 @@
 # import turtle
-from turtle import Turtle
+from turtle import Turtle, Screen
 
 # define all the constant variables
 START_POSITION = [(0, 0), (-20, 0), (-40, 0)]
-MOVE_DISTANCE = 20
+
 UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
 
+screen = Screen()
 
 # create the snake class
 class Snake:
@@ -20,6 +21,9 @@ class Snake:
         self.create_snake()
         self.head = self.segments[0]
         self.head.shape("turtle")
+        self.MOVE_DISTANCE = 10
+        self.level_up()
+        
 
 
     def create_snake(self):
@@ -30,6 +34,7 @@ class Snake:
             snake.goto(i)
             snake.color("white")
             self.segments.append(snake)
+            
 
     def move(self):
         """moves the snake in the coordinates of the first turtle"""
@@ -37,7 +42,8 @@ class Snake:
             new_x = self.segments[seg_num - 1].xcor()
             new_y = self.segments[seg_num - 1].ycor()
             self.segments[seg_num].goto(new_x, new_y)
-        self.head.forward(MOVE_DISTANCE)
+        
+        self.head.forward(self.MOVE_DISTANCE)
 
     def add_body(self, postion):
         snake = Turtle("square")
@@ -66,3 +72,26 @@ class Snake:
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(0)
+
+    def increase_speed(self):
+       pass
+
+    def reset_snake(self):
+        """moves snake away from the screen and creates a new snake after every user turn"""
+        for seg in self.segments:
+            seg.goto(1000, 1000)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
+    diff = ""
+    def level_up(self):
+        self.diff = screen.textinput(title= "difficulty", prompt="choose difficulty: 'easy'/ 'normal'/ 'hard'".lower() )
+        if self.diff == 'easy':
+            self.MOVE_DISTANCE
+
+        elif self.diff == 'normal':
+            self.MOVE_DISTANCE += 10
+
+        else:
+            self.MOVE_DISTANCE += 20
+        
