@@ -1,16 +1,16 @@
-API_KEY = "029df595b0f53c487032e0c310c9aa18"
+API_KEY = "Your API key for open weather"
 
 import requests
 from twilio.rest import Client
 
 
 
-account_sid = "ACee8c3fe70faa4a32ec52731181957340"
-auth_token = '47e42d2db40539063a8a30910b9ee99a'
+account_sid = "your twilio sid"
+auth_token = 'your twilio auth token'
 client = Client(account_sid, auth_token)
 parameters={
-    "lat": "55.755825",
-    "lon": "37.617298",
+    "lat": "your latitude",
+    "lon": "your longitude",
     "appid": API_KEY,
     "exclude": "current,minutely,daily"
 }
@@ -32,9 +32,9 @@ if will_rain:
     client = Client(account_sid, auth_token)
     message = client.messages\
         .create(
-        to='+2348169876904',
+        to='destination number',
         body='🌧️. take an ☂',
-        from_= '+19126008386'
+        from_= 'your twilio number'
     )
 
     print(message.status)
