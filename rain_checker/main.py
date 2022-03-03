@@ -1,3 +1,5 @@
+# A program that gets the weather information of your coordinates from openweathermap and sends a notification when it will rain
+
 API_KEY = "Your API key for open weather"
 
 import requests
