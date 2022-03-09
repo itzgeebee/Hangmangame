@@ -1,3 +1,4 @@
+# A script that uses beautifulsoup to scrape for the price of a product and sends an email when the price codition you set is met
 from bs4 import BeautifulSoup
 import requests
 import lxml
@@ -11,7 +12,7 @@ headers = {"Accept-Language": "en-US,en;q=0.9",
            "Accept":"text/html,application/xhtml+xml,"
                     "application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
            }
-
+#scrape amazon
 response = requests.get(url=amazon_site, headers=headers).text
 
 soup = BeautifulSoup(response, "lxml")
@@ -19,6 +20,7 @@ output = soup.find(name="span", class_="a-offscreen").get_text()
 new_output = float(output.replace("$","").replace(",",""))
 print(new_output)
 
+#send mail
 my_email = ""
 password = ""
 email = ""
