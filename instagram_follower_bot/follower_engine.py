@@ -1,3 +1,4 @@
+# A simple bot made using selenium that follows the users of any account you specify
 from selenium import webdriver
 from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException
 from selenium.webdriver import Keys
